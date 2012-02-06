@@ -9,16 +9,16 @@ echo "-----> Compiling Jekyll site"
 # Install Jekyll into hidden directory in app roote
 
 cat << EOF > ~/.gemrc
-gemhome: $1/.gems
+gemhome: $1/vendor/bundle
 gempath:
-- $1/.gems
+- $1/vendor/bundle
 EOF
 
 /usr/local/bin/gem install jekyll RedCloth --no-rdoc --no-ri | indent
 
 # Run Jekyll
 echo "Running Jekyll" | indent
-export GEM_HOME=$1/.gems
-export PATH=$1/.gems/bin:$PATH
+export GEM_HOME=$1/vendor/bundle
+export PATH=$1/vendor/bundle/bin:$PATH
 cd $1
-$1/.gems/bin/jekyll | indent
+$1/vendor/bundle/bin/jekyll | indent
